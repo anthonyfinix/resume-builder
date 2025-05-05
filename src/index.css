@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@theme{
+    --font-heading: 2em
+}
