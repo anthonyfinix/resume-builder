@@ -1,10 +1,15 @@
-import "./resume.scss";
 import { useContext, useLayoutEffect, useRef } from "react";
 import { ResumeContext } from "../ResumeProvider";
 import formatDate from "../../utils/formatDate";
 import FirstName from "./FirstName";
 import Heading from "./Heading";
 import Subheading from "./Subheading";
+import Aside from "./Aside";
+import Main from "./Main";
+import Article from "./Article";
+import Figure from "./Figure";
+import Experience from "./Experience";
+import Education from "./Education";
 
 const Resume = () => {
   const resume = useContext(ResumeContext);
@@ -17,84 +22,89 @@ const Resume = () => {
   }, []);
 
   return (
-    <div ref={resumeRef} className="resume">
+    <div
+      ref={resumeRef}
+      style={{
+        height: "80vh",
+        aspectRatio: "0.706",
+        width: "auto",
+        background: "#fff",
+        padding: "24px",
+        boxSizing: "border-box",
+        overflow: "auto",
+        boxShadow: "0px 1px 100px -30px #00000069",
+        fontSize: "12px",
+        fontFamily: "sans-serif",
+      }}
+    >
       {/* Header */}
-      <header>
+      <header style={{ marginBottom: 10 }}>
         <FirstName />
         <p>{resume?.headline}</p>
       </header>
 
-      <div className="layout">
-        <section>
-          <article>
+      <div
+        style={{
+          display: "flex",
+          gap: 15,
+        }}
+      >
+        <Main>
+          <Article>
             <Heading>Expectation</Heading>
             <p>{resume?.expectation}</p>
-          </article>
-          <article>
+          </Article>
+          <Article>
             <Heading>Experience</Heading>
             {resume?.experience?.map((exp, idx) => (
-              <figure key={idx}>
-                <h3>
-                  {exp.companyName} — {exp.designation}
-                </h3>
-                <p>
-                  {formatDate(exp.startDate)} - {formatDate(exp.endDate)}
-                </p>
-                <p>{exp.description}</p>
-              </figure>
+              <Experience key={idx} exp={exp} />
             ))}
-          </article>
-          <article>
+          </Article>
+          <Article>
             <Heading>Education</Heading>
             {resume?.education?.map((edu, idx) => (
-              <figure key={idx}>
-                <h3>{edu.institution}</h3>
-                <p>{edu.qualification}</p>
-                <p>
-                  {formatDate(edu.startDate)} - {formatDate(edu.endDate)}
-                </p>
-              </figure>
+              <Education key={idx} edu={edu} />
             ))}
-          </article>
-        </section>
-        <aside>
-          <article>
+          </Article>
+        </Main>
+        <Aside>
+          <Article>
             <Heading>Contact</Heading>
-            <figure>
+            <Figure>
               <p> {resume?.phoneNumber}</p>
               <p> {resume?.email}</p>
-            </figure>
-          </article>
+            </Figure>
+          </Article>
 
-          <article>
+          <Article>
             <Heading>Date of Birth</Heading>
             <p>{formatDate(resume?.dateOfBirth)}</p>
-          </article>
+          </Article>
 
-          <article>
+          <Article>
             <Heading>Address</Heading>
             <Subheading subdued>Current</Subheading>
             <p>{resume?.currentAddress}</p>
             <Subheading subdued>Permanent</Subheading>
             <p>{resume?.permanentAddress}</p>
-          </article>
+          </Article>
 
-          <article>
+          <Article>
             <Heading>Tags</Heading>
             <div>
               <p>{resume?.tags?.join(", ")}</p>
             </div>
-          </article>
+          </Article>
 
-          <article>
+          <Article>
             <Heading>Languages</Heading>
             <ul>
               {resume?.languages?.map((language, idx) => (
                 <li key={idx}>{language}</li>
               ))}
             </ul>
-          </article>
-        </aside>
+          </Article>
+        </Aside>
       </div>
     </div>
   );
