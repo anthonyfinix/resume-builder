@@ -40,7 +40,7 @@ export const Plus: FC<IconType> = ({ onClick }) => (
     />
   </svg>
 );
-export const Minus:FC<IconType> = () => (
+export const Minus: FC<IconType> = () => (
   <svg
     className="w-6 h-6 text-gray-800 dark:text-white"
     aria-hidden="true"
@@ -60,7 +60,7 @@ export const Minus:FC<IconType> = () => (
   </svg>
 );
 
-export const Dustbin:FC<IconType> = ({ onClick }) => {
+export const Dustbin: FC<IconType> = ({ onClick }) => {
   return (
     <svg
       className="w-6 h-6 text-gray-800 dark:text-white"
@@ -84,7 +84,7 @@ export const Dustbin:FC<IconType> = ({ onClick }) => {
   );
 };
 
-export const Pen:FC<IconType> = ({ onClick }) => {
+export const Pen: FC<IconType> = ({ onClick }) => {
   return (
     <svg
       className="w-6 h-6 text-gray-800 dark:text-white"
@@ -103,6 +103,26 @@ export const Pen:FC<IconType> = ({ onClick }) => {
         stroke-linejoin="round"
         stroke-width="2"
         d="M10.779 17.779 4.36 19.918 6.5 13.5m4.279 4.279 8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14 6.213-6.504M12.75 7.04 17 11.28"
+      />
+    </svg>
+  );
+};
+
+export const Print: FC<IconType> = ({ onClick }) => {
+  return (
+    <svg
+      className="w-6 h-6 text-white dark:text-white"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M8 3a2 2 0 0 0-2 2v3h12V5a2 2 0 0 0-2-2H8Zm-3 7a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h1v-4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v4h1a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H5Zm4 11a1 1 0 0 1-1-1v-4h8v4a1 1 0 0 1-1 1H9Z"
+        clip-rule="evenodd"
       />
     </svg>
   );

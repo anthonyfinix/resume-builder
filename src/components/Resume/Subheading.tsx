@@ -1,11 +1,11 @@
 import { FC } from "react";
-
+import Text from "./Text";
 const Subheading: FC<{ children: string; subdued?: boolean }> = ({
   children,
   subdued,
 }) => {
   return (
-    <h2
+    <Text
       style={{
         fontWeight: 500,
         color: subdued ? "#525252" : "black",
@@ -13,7 +13,7 @@ const Subheading: FC<{ children: string; subdued?: boolean }> = ({
       }}
     >
       {children}
-    </h2>
+    </Text>
   );
 };
 export default Subheading;

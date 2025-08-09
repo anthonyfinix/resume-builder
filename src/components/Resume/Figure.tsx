@@ -7,6 +7,8 @@ const Figure: FC<{
     <figure
       style={{
         marginBottom: 8,
+        marginLeft: 0,
+        marginTop: 0
       }}
     >
       {children}

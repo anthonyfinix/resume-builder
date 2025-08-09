@@ -1,7 +1,15 @@
 import { Education, Experience, Resume } from "../types";
-import { createContext, FC, ReactElement, useMemo, useState } from "react";
+import {
+  createContext,
+  FC,
+  ReactElement,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 export type ResumeContext = Resume & {
+  resumeRef: React.RefObject<HTMLDivElement | null>;
   setName: React.Dispatch<React.SetStateAction<string>>;
   setHeadline: React.Dispatch<React.SetStateAction<string>>;
   setExpectation: React.Dispatch<React.SetStateAction<string>>;
@@ -19,6 +27,7 @@ export type ResumeContext = Resume & {
 // eslint-disable-next-line react-refresh/only-export-components
 export const ResumeContext = createContext<null | ResumeContext>(null);
 const ResumeProvider: FC<{ children: ReactElement }> = ({ children }) => {
+  const resumeRef = useRef<HTMLInputElement>(null);
   const [name, setName] = useState("John Doe");
   const [expectation, setExpectation] = useState("Good workin culture");
   const [phoneNumber, setPhoneNumber] = useState("+1 (555) 123-4567");
@@ -101,6 +110,7 @@ const ResumeProvider: FC<{ children: ReactElement }> = ({ children }) => {
       setLanguages,
       dateOfBirth,
       setDateOfBirth,
+      resumeRef,
     }),
     [
       name,

@@ -2,17 +2,18 @@ import { FC } from "react";
 import Figure from "./Figure";
 import { Experience as ExperienceType } from "../../types";
 import formatDate from "../../utils/formatDate";
+import Text from "./Text";
 
 const Experience: FC<{ exp: ExperienceType }> = ({ exp }) => {
   return (
     <Figure>
-      <h3>
+      <Text>
         {exp.companyName} — {exp.designation}
-      </h3>
-      <p>
+      </Text>
+      <Text>
         {formatDate(exp.startDate)} - {formatDate(exp.endDate)}
-      </p>
-      <p>{exp.description}</p>
+      </Text>
+      <Text>{exp.description}</Text>
     </Figure>
   );
 };

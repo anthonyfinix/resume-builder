@@ -1,8 +1,9 @@
 import { FC } from "react";
+import Text from "./Text";
 
 const Heading: FC<{ children: string }> = ({ children }) => {
   return (
-    <h1
+    <Text
       style={{
         fontWeight: 400,
         color: "#FF0000",
@@ -10,7 +11,7 @@ const Heading: FC<{ children: string }> = ({ children }) => {
       }}
     >
       {children}
-    </h1>
+    </Text>
   );
 };
 export default Heading;

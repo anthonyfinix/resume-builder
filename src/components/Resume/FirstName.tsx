@@ -25,7 +25,7 @@ const FirstName = () => {
   return (
     <span
       ref={reference}
-      style={{ textTransform: "uppercase", fontSize: fontSize }}
+      style={{ textTransform: "uppercase", fontSize: fontSize, margin: 0 }}
     >
       {name}
     </span>
