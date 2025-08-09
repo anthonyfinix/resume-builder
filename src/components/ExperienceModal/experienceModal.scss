@@ -1,0 +1,14 @@
+.experienceModalWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    h1{
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .input-wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+}

@@ -1,0 +1,109 @@
+.backdrop-wrapper {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar content";
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 230px 1fr; /* Adjust sidebar width */
+  height: 100vh;
+  gap: 5px;
+  box-sizing: border-box;
+  background-color: rgb(248, 248, 248);
+  .subsidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    .input-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      min-height: 50px;
+      padding: 10px;
+      background-color: white;
+      gap: 5px;
+      & > input {
+        margin: 0px;
+        width: 100%;
+      }
+      & > textarea {
+        margin: 0px;
+        width: 100%;
+      }
+    }
+    .experience-item {
+      display: flex;
+      gap: 5px;
+      padding: 10px;
+      background-color: white;
+      > p {
+        flex-grow: 1;
+      }
+    }
+    .education-item {
+      display: flex;
+      gap: 5px;
+      padding: 10px;
+      background-color: white;
+      > p {
+        flex-grow: 1;
+      }
+    }
+    .language-item {
+      display: flex;
+      gap: 5px;
+      padding: 10px;
+      background-color: white;
+      > p {
+        flex-grow: 1;
+      }
+    }
+    .tag-item {
+      display: flex;
+      gap: 5px;
+      padding: 10px;
+      background-color: white;
+      > p {
+        flex-grow: 1;
+      }
+    }
+  }
+  &.sidebar-active {
+    grid-template-areas:
+      "header header header"
+      "sidebar subsidebar content";
+    grid-template-columns: 230px 250px 1fr;
+  }
+  .header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    grid-area: header;
+    background-color: white;
+    height: 80px;
+    padding: 0px 10px;
+  }
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    grid-area: sidebar;
+    .sidebar-item {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: white;
+      padding: 0px 10px;
+      cursor: pointer;
+    }
+  }
+  .content {
+    grid-area: content;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+}

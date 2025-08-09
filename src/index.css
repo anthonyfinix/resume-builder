@@ -1,4 +1,33 @@
 @import "tailwindcss";
-@theme{
-    --font-heading: 2em
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  --font-heading: 2em;
+}
+
+.input-label-wrapper {
+  @apply mb-2;
+}
+.input-label-wrapper.hide-label > p {
+  display: none;
+}
+.input {
+  @apply py-2 px-3 my-2 bg-neutral-100 rounded-sm;
+}
+.dateInput {
+  @apply p-0;
+}
+.resume-content-name {
+  font-size: 48px;
+  font-weight: normal;
+}
+.resume-content-headline {
+  font-size: 12px;
+  font-weight: normal;
+}
+.resume-content-subheading{
+  font-size: 18px;
+  font-weight: bold;
+  color: #FF0000;
 }

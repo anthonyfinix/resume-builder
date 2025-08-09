@@ -1,83 +1,50 @@
-import "./App.css";
+import "./App.scss";
 import Sidebar from "./components/Sidebar";
-import Resume from "./components/Resume";
-import { useState } from "react";
+import Header from "./components/Header";
+import Content from "./components/Content";
+import BasicInformationSidebar from "./components/BasicInformationSidebar";
+import ResumeProvider from "./components/ResumeProvider";
+import { AppContext } from "./components/AppProvider";
+import { useContext } from "react";
+import WorkExperienceSidebar from "./components/WorkExperienceSidebar";
+import EducationSidebar from "./components/EducationSidebar";
+import LanguageSidebar from "./components/LanguageSidebar";
+import TagSidebar from "./components/TagSidebar";
 
 function App() {
-  const [name, setName] = useState<string>("");
-  const [headline, setHeadline] = useState<string>("");
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [dateOfBirth, setDateOfBirth] = useState<Date>(new Date());
-  const [currentAddress, setCurrentAddress] = useState<string>("");
-  const [permanentAddress, setPermanentAddress] = useState<string>("");
-  const [expectation, setExpectation] = useState<string[]>([]);
-  const [languages, setLanguages] = useState<string[]>([]);
-  const [workExperiences, setWorkExperiences] = useState<
+  const items = [
     {
-      companyName: string;
-      designation: string;
-      duties: string[];
-      joiningData: Date;
-      relievedData: Date;
-      current: boolean;
-    }[]
-  >([]);
-  const [academicQualifications, setAcademicQualifications] = useState<
-    {
-      establishmentName: string;
-      joiningData: Date;
-      relievedData: Date;
-      certifcation: string;
-      link?: string[];
-      persuing: boolean;
-    }[]
-  >([]);
+      value: "basicInformation",
+      label: "Basic Information",
+    },
+    { value: "workExperience", label: "Work Experiences" },
+    { value: "education", label: "Educations" },
+    { value: "language", label: "Languages" },
+    { value: "tag", label: "Tags" },
+  ];
+  const appContext = useContext(AppContext);
   return (
-    <>
-      <div id="backdrop" className="bg-neutral-200 overflow-hidden h-screen">
-        <div className="page-wrapper flex justify-center">
-          <Resume
-            name={name}
-            headline={headline}
-            phoneNumber={phoneNumber}
-            email={email}
-            dateOfBirth={dateOfBirth}
-            currentAddress={currentAddress}
-            permanentAddress={permanentAddress}
-            expectation={expectation}
-            language={languages}
-            workExperiences={workExperiences}
-            academicQualifications={academicQualifications}
-          />
-        </div>
-        <Sidebar
-          // Personal Information
-          name={name}
-          handleNameChange={setName}
-          headline={headline}
-          handleHeadlineChange={setHeadline}
-          phoneNumber={phoneNumber}
-          handlePhoneNumberChange={setPhoneNumber}
-          email={email}
-          handleEmailChange={setEmail}
-          dateOfBirth={dateOfBirth}
-          handleDateOfBirthChange={setDateOfBirth}
-          currentAddress={currentAddress}
-          handleCurrentAddressChange={setCurrentAddress}
-          permanentAddress={permanentAddress}
-          handlePermanentAddressChange={setPermanentAddress}
-          expectation={expectation}
-          handleExpectationChange={setExpectation}
-          languages={languages}
-          handleLanguagesChange={setLanguages}
-          workExperiences={workExperiences}
-          handleWorkExperiencesChange={setWorkExperiences}
-          academicQualifications={academicQualifications}
-          handleAcademicQualificationsChange={setAcademicQualifications}
-        />
+    <ResumeProvider>
+      <div
+        id="backdrop"
+        className={`backdrop-wrapper${
+          appContext?.selectedMenu !== null ? " sidebar-active" : ""
+        }`}
+      >
+        <Header />
+        <Sidebar items={items} />
+        {appContext?.selectedMenu === "basicInformation" && (
+          <BasicInformationSidebar />
+        )}
+        {appContext?.selectedMenu === "workExperience" && (
+          <WorkExperienceSidebar />
+        )}
+        {appContext?.selectedMenu === "education" && <EducationSidebar />}
+        {appContext?.selectedMenu === "language" && <LanguageSidebar />}
+        {appContext?.selectedMenu === "tag" && <TagSidebar />}
+        <Content />
       </div>
-    </>
+    </ResumeProvider>
   );
 }
 
