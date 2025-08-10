@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Button from "./Button";
 import { Flex } from "./Flex";
 import { Bars, Print } from "./icons";
