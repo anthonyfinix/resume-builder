@@ -6,7 +6,11 @@ interface TextProps {
 }
 
 const Text: FC<TextProps> = ({ children, style }) => {
-  return <p style={{ margin: 0, ...style }}>{children}</p>; // ✅ merge defaults with custom styles
+  return (
+    <p style={{ margin: 0, fontSize: 12, color: "black", ...style }}>
+      {children}
+    </p>
+  );
 };
 
 export default Text;
