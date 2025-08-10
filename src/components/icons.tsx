@@ -112,6 +112,7 @@ export const Print: FC<IconType> = ({ onClick }) => {
   return (
     <svg
       className="w-6 h-6 text-white dark:text-white"
+      onClick={onClick}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       width="24"
