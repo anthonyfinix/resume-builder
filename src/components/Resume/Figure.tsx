@@ -6,7 +6,7 @@ const Figure: FC<{
   return (
     <figure
       style={{
-        marginBottom: 8,
+        marginBottom: 5,
         marginLeft: 0,
         marginTop: 0
       }}

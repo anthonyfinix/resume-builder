@@ -29,7 +29,7 @@ export const ResumeContext = createContext<null | ResumeContext>(null);
 const ResumeProvider: FC<{ children: ReactElement }> = ({ children }) => {
   const resumeRef = useRef<HTMLInputElement>(null);
   const [name, setName] = useState("John Doe");
-  const [expectation, setExpectation] = useState("Good workin culture");
+  const [expectation, setExpectation] = useState("I seek a challenging role that fosters growth, values collaboration, and allows me to apply my skills to create impactful solutions.");
   const [phoneNumber, setPhoneNumber] = useState("+1 (555) 123-4567");
   const [dateOfBirth, setDateOfBirth] = useState(new Date(1990, 0, 1));
   const [email, setEmail] = useState("johndoe@example.com");
@@ -46,7 +46,7 @@ const ResumeProvider: FC<{ children: ReactElement }> = ({ children }) => {
     "456 Elm St, Springfield, IL"
   );
   const [headline, setHeadline] = useState(
-    "Passionate coder and tech enthusiast with 5+ years of experience"
+    "Creative software engineer with 7+ years of hands-on development experience"
   );
   const [experience, setExperience] = useState<Experience[]>([
     {

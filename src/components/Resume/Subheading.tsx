@@ -9,7 +9,7 @@ const Subheading: FC<{ children: string; subdued?: boolean }> = ({
       style={{
         fontWeight: 500,
         color: subdued ? "#525252" : "black",
-        fontSize: 15,
+        fontSize: 13,
       }}
     >
       {children}

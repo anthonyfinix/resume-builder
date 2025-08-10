@@ -6,7 +6,7 @@ const Article: FC<{
   return (
     <article
       style={{
-        marginBottom: 10,
+        marginBottom: 7,
       }}
     >
       {children}

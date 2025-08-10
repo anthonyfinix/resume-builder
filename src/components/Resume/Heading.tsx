@@ -7,7 +7,7 @@ const Heading: FC<{ children: string }> = ({ children }) => {
       style={{
         fontWeight: 400,
         color: "#FF0000",
-        fontSize: 18,
+        fontSize: 14,
       }}
     >
       {children}
