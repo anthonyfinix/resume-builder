@@ -4,28 +4,23 @@ import { ResumeContext } from "../ResumeProvider";
 const FirstName = () => {
   const { name } = useContext(ResumeContext) as { name: string };
   const reference = useRef<HTMLInputElement>(null);
-  const baseFontSize = 40;
-  const [fontSize, setFontSize] = useState(baseFontSize);
-//   const adjustFontSize = useCallback(() => {
-//     if (!reference.current) return;
-//     const maxWidth = 300;
-//     const elementWidth = reference.current.offsetWidth;
-//     if (elementWidth > maxWidth) {
-//       const scale = maxWidth / elementWidth;
-//       console.log(scale, Math.max(16, 20 * scale));
-//       setFontSize(Math.max(12, 20 * scale));
-//     } else {
-//       setFontSize(baseFontSize);
-//     }
-//   }, [name, reference.current]);
+  const [fontSize, setFontSize] = useState(40);
+  const adjustFontSize = useCallback(() => {
+    if (!reference.current) return;
+    const { offsetWidth } = reference.current;
+    const minWidth = 150;
+    const maxWidth = 300;
+    if (offsetWidth > maxWidth) setFontSize(fontSize - 3);
+    if (offsetWidth < minWidth) setFontSize(fontSize + 3);
+  }, [name, reference.current]);
 
-//   useEffect(() => {
-//     adjustFontSize();
-//   }, [name, reference.current]);
+  useEffect(() => {
+    adjustFontSize();
+  }, [name, reference.current]);
   return (
     <span
       ref={reference}
-      style={{ textTransform: "uppercase", fontSize: fontSize, margin: 0 }}
+      style={{ textTransform: "uppercase", fontSize, margin: 0 }}
     >
       {name}
     </span>
