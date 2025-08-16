@@ -88,7 +88,7 @@ const Resume: FC<{
 
             <Article>
               <Heading>Date of Birth</Heading>
-              <p>{formatDate(resume?.dateOfBirth)}</p>
+              <Text>{formatDate(resume?.dateOfBirth)}</Text>
             </Article>
 
             <Article>

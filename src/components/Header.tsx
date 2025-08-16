@@ -15,10 +15,8 @@ const Header = () => {
       <html>
         <head>
           <title>Print</title>
-          <!-- Import existing CSS -->
-          <link rel="stylesheet" href="/styles.css" />
           <style>
-            body { font-family: Arial, sans-serif; padding: 20px; }
+            body { font-family: Arial, sans-serif; margin: 0px, padding: 0px }
             h1 { color: darkblue; }
           </style>
         </head>
