@@ -1,17 +1,27 @@
 import { FC } from "react";
-import Text from "./Text";
+import { BaseSVGTextProps } from "../../types";
 
-const Heading: FC<{ children: string }> = ({ children }) => {
+const Heading: FC<BaseSVGTextProps> = ({
+  text,
+  x,
+  y,
+  fill = "#FF0000",
+  dominantBaseline = "hanging"
+}) => {
   return (
-    <Text
+    <text
+      x={x}
+      y={y}
+      dominantBaseline={dominantBaseline}
+      fill={fill}
       style={{
         fontWeight: 400,
-        color: "#FF0000",
         fontSize: 14,
       }}
     >
-      {children}
-    </Text>
+      {text}
+    </text>
   );
 };
+
 export default Heading;

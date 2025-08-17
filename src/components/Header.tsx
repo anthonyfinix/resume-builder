@@ -16,7 +16,7 @@ const Header = () => {
         <head>
           <title>Print</title>
           <style>
-            body { font-family: Arial, sans-serif; margin: 0px, padding: 0px }
+            body { font-family: Arial, sans-serif; margin: 0px; padding: 0px }
             h1 { color: darkblue; }
           </style>
         </head>
@@ -37,7 +37,7 @@ const Header = () => {
             <Bars />
             <p>Resume Builder</p>
           </Flex>
-          <Button onClick={handlePrint}>
+          <Button onClick={handlePrint} size="xs">
             <Flex gap={4}>
               <Print />
               Print

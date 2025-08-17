@@ -21,6 +21,14 @@ const BasicInformationSidebar = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
+  // Event Handlers with useCallback
+  const handleExpectationChange = useCallback(
+    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      resumeContext!.setExpectation(e.target.value);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
 
   const handlePhoneNumberChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,6 +93,15 @@ const BasicInformationSidebar = () => {
           rows={3}
           value={resumeContext.headline}
           onChange={handleHeadlineChange}
+        />
+      </div>
+      <div className="input-wrapper">
+        <p>Expectation</p>
+        <textarea
+          className="input"
+          rows={3}
+          value={resumeContext.expectation}
+          onChange={handleExpectationChange}
         />
       </div>
       <div className="input-wrapper">

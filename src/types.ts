@@ -36,3 +36,16 @@ export const ResumeSchema = z.object({
 });
 
 export type Resume = z.infer<typeof ResumeSchema>;
+
+export type BaseSVGTextProps = {
+  text: string;
+  x: string;
+  y: string;
+  dy?: string;
+  fontSize?: string;
+  fontFamily?: string;
+  fill?: string;
+  dominantBaseline?: string;
+  as?: "text" | "tspan";
+  variant?: "heading" | "subheading" | "body" | "caption";
+}
