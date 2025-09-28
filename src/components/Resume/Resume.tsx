@@ -1,23 +1,44 @@
-import { FC, useContext, useLayoutEffect, useRef } from "react";
+import { FC, useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ResumeContext } from "../ResumeProvider";
 import formatDate from "../../utils/formatDate";
-import FirstName from "./FirstName";
-import Heading from "./Heading";
-import Subheading from "./Subheading";
-import Aside from "./Aside";
-import Main from "./Main";
-import Article from "./Article";
-import Figure from "./Figure";
-import Experience from "./Experience";
-import Education from "./Education";
-import Text from "./Text";
+import { Resume as StyledResume } from './styles/index'
+// import FirstName from "./FirstName";
+// import Heading from "./Heading";
+// import Subheading from "./Subheading";
+// import Aside from "./Aside";
+// import Main from "./Main";
+// import Article from "./Article";
+// import Figure from "./Figure";
+// import Experience from "./Experience";
+// import Education from "./Education";
+// import Text from "./Text";
 
 const Resume: FC<{
   ref: React.RefObject<HTMLDivElement | null> | undefined;
 }> = () => {
   const resume = useContext(ResumeContext);
   const resumeRef = useRef<HTMLDivElement>(null);
-  const handleSize = () => {};
+  const [dimensions, setDimensions] = useState({
+    width: 0,
+    height: 0,
+    baseFontSize: 0
+  });
+  const INVERSE_ASPECT_RATIO = 1 / 0.706;
+
+  const handleSize = () => {
+    if (resumeRef.current) {
+      const currentWidth = resumeRef.current.clientWidth;
+      const newHeight = currentWidth * INVERSE_ASPECT_RATIO;
+      const newBaseFontSize = currentWidth / 25;
+      resumeRef.current.style.height = `${newHeight}px`;
+      setDimensions({
+        width: currentWidth,
+        height: newHeight,
+        baseFontSize: newBaseFontSize
+      });
+    }
+  };
+
   useLayoutEffect(() => {
     handleSize();
     window.addEventListener("resize", handleSize);
@@ -25,99 +46,50 @@ const Resume: FC<{
   }, []);
 
   return (
-    <>
-      <div
-        id="resume"
-        ref={(ref) => {
-          resumeRef.current = ref;
-          if (resume) {
-            resume.resumeRef.current = ref;
-          }
-        }}
-        style={{
-          height: "80vh",
-          aspectRatio: "0.706",
-          width: "auto",
-          background: "#fff",
-          padding: "24px",
-          boxSizing: "border-box",
-          overflow: "auto",
-          boxShadow: "0px 1px 100px -30px #00000069",
-          fontSize: "12px",
-          fontFamily: "sans-serif",
-        }}
-      >
-        {/* Header */}
-        <header style={{ marginBottom: 10 }}>
+    <div
+      id="resume-preview"
+      style={{
+        width: '500px',
+        height: dimensions.height,
+        background: "#fff",
+        padding: "40px"
+      }}
+      ref={(ref) => {
+        resumeRef.current = ref;
+        if (resume) {
+          resume.resumeRef.current = ref;
+        }
+      }}
+    >
+      {/* <header style={{ marginBottom: 10 }}>
           <FirstName />
           <Text>{resume?.headline}</Text>
-        </header>
-
-        <div
-          style={{
-            display: "flex",
-            gap: 15,
-          }}
-        >
-          <Main>
-            <Article>
-              <Heading>Expectation</Heading>
-              <Text>{resume?.expectation}</Text>
-            </Article>
-            <Article>
-              <Heading>Experience</Heading>
-              {resume?.experience?.map((exp, idx) => (
-                <Experience key={idx} exp={exp} />
-              ))}
-            </Article>
-            <Article>
-              <Heading>Education</Heading>
-              {resume?.education?.map((edu, idx) => (
-                <Education key={idx} edu={edu} />
-              ))}
-            </Article>
-          </Main>
-          <Aside>
-            <Article>
-              <Heading>Contact</Heading>
-              <Figure>
-                <Text> {resume?.phoneNumber}</Text>
-                <Text> {resume?.email}</Text>
-              </Figure>
-            </Article>
-
-            <Article>
-              <Heading>Date of Birth</Heading>
-              <Text>{formatDate(resume?.dateOfBirth)}</Text>
-            </Article>
-
-            <Article>
-              <Heading>Address</Heading>
-              <Subheading subdued>Current</Subheading>
-              <Text>{resume?.currentAddress}</Text>
-              <Subheading subdued>Permanent</Subheading>
-              <Text>{resume?.permanentAddress}</Text>
-            </Article>
-
-            <Article>
-              <Heading>Tags</Heading>
-              <div>
-                <Text>{resume?.tags?.join(", ")}</Text>
-              </div>
-            </Article>
-
-            <Article>
-              <Heading>Languages</Heading>
-              <div>
-                {resume?.languages?.map((language, idx) => (
-                  <Text key={idx}>{language}</Text>
-                ))}
-              </div>
-            </Article>
-          </Aside>
-        </div>
-      </div>
-    </>
+        </header> */}
+      <h1 style={{ fontSize: `${dimensions.baseFontSize * 1.2}px`, marginBottom: 5 }}>{resume?.name}</h1>
+      <h2 style={{ fontSize: `${dimensions.baseFontSize * .6}px` }}>Summary</h2>
+      <p style={{ fontSize: `${dimensions.baseFontSize * 0.5}px`, marginBottom: 5 }}>{resume?.headline}</p>
+      <h2 style={{ fontSize: `${dimensions.baseFontSize * .6}px` }}>Experience</h2>
+      {resume?.experience.map(exp => {
+        return (
+          <>
+            <h2 style={{ fontSize: `${dimensions.baseFontSize * .5}px` }}>{exp.companyName}</h2>
+            <p style={{ fontSize: `${dimensions.baseFontSize * .5}px` }}>{exp.description}</p>
+          </>
+        )
+      })}
+      <h2 style={{ fontSize: `${dimensions.baseFontSize * .6}px`, marginTop: 5 }}>Education</h2>
+      {resume?.education.map(edu => {
+        return (
+          <>
+            <h2 style={{ fontSize: `${dimensions.baseFontSize * .5}px` }}>{edu.institution} - {edu.qualification} - {formatDate(edu.endDate)}</h2>
+          </>
+        )
+      })}
+      <h2 style={{ fontSize: `${dimensions.baseFontSize * .6}px`, marginTop: 5 }}>Language</h2>
+      <p style={{ fontSize: `${dimensions.baseFontSize * .5}px` }}>{resume?.languages.join(", ").replace(/, *$/, "")}</p>
+      <h2 style={{ fontSize: `${dimensions.baseFontSize * .6}px`, marginTop: 5 }}>Skills</h2>
+      <p style={{ fontSize: `${dimensions.baseFontSize * .5}px` }}>{resume?.tags.join(", ").replace(/, *$/, "")}</p>
+    </div>
   );
 };
 export default Resume;

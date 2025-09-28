@@ -15,6 +15,7 @@
     "flowbite-react": "^0.11.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "styled-components": "^6.1.19",
     "tailwindcss": "^4.1.5",
     "zod": "^3.25.76"
   },
@@ -31,5 +32,8 @@
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.26.1",
     "vite": "^6.3.1"
+  },
+  "resolutions": {
+    "styled-components": "^5"
   }
 }

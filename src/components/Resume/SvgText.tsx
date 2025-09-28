@@ -1,6 +1,7 @@
 // SvgText.tsx
-import { FC, JSX } from "react";
+import { FC, JSX, useRef } from "react";
 import { BaseSVGTextProps } from "../../types";
+import useCoordinate from "./useCoordinates";
 
 const VARIANT_STYLES: Record<
     NonNullable<BaseSVGTextProps["variant"]>,
@@ -38,7 +39,8 @@ const SvgText: FC<BaseSVGTextProps> = ({
     as = "text",
     variant = "body",
 }) => {
-    const Tag = as as keyof JSX.IntrinsicElements;
+    const ref = useRef(null);
+    const Tag = as;
 
     // merge variant defaults with overrides
     const style: React.CSSProperties = {
@@ -50,6 +52,7 @@ const SvgText: FC<BaseSVGTextProps> = ({
 
     return (
         <Tag
+            ref={ref}
             x={x}
             y={y}
             dy={dy}

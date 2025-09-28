@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+import useCoordinate from "./useCoordinates";
 
 interface WrappedSVGTextProps {
     text: string;
@@ -23,6 +24,8 @@ const WrappedSVGText: React.FC<WrappedSVGTextProps> = ({
     as
 }) => {
     const words = text.split(/\s+/);
+    const ref = useRef(null);
+    const { x: xCoordinate, y: yCoordinate } = useCoordinate(ref, text)
     const lines: string[] = [];
     let currentLine = "";
     if (typeof document !== "undefined") {
@@ -53,7 +56,7 @@ const WrappedSVGText: React.FC<WrappedSVGTextProps> = ({
         // Fallback if document is unavailable (e.g. SSR)
         lines.push(text);
     }
-    
+
     const Parent = as === "tspan" ? "tspan" : "text";
 
     return (
@@ -63,6 +66,7 @@ const WrappedSVGText: React.FC<WrappedSVGTextProps> = ({
             fontSize={fontSize}
             fill={fill}
             dominantBaseline="hanging"
+            ref={ref}
         >
             {lines.map((line, index) => (
                 <tspan key={index} dominant-baseline="hanging" x={x} dy={index === 0 && y ? "0" : dy}>

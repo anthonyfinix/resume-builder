@@ -1,11 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ResumeContext } from "../ResumeProvider";
 import WrappedSVGText from "./WrappedSVGText";
 import SvgText from "./SvgText";
 
 const ResumeSVG = () => {
     const resume = useContext(ResumeContext);
-    return <div style={{height: "80vh"}} ref={resume?.resumeRef}>
+    return <div style={{ height: "80vh" }} ref={resume?.resumeRef}>
         <svg style={{
             height: "80vh",
             aspectRatio: "0.706",
@@ -49,7 +49,7 @@ const ResumeSVG = () => {
                     month: "long",
                     year: "numeric"
                 })
-                .format(resume!.dateOfBirth)
+                    .format(resume!.dateOfBirth)
                 } />
             <SvgText variant="heading" x="24" y="320" text="Professional Journey" />
             <text x="24" y="340" dominantBaseline="hanging" fontSize="10pt" fill="black">

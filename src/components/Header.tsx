@@ -8,16 +8,37 @@ const Header = () => {
   const resumeContext = useContext(ResumeContext);
   const handlePrint = () => {
     if (resumeContext) {
-      const divContents = resumeContext.resumeRef.current?.innerHTML;
+      const divContents = resumeContext.resumeRef.current?.parentElement?.innerHTML;
       const printWindow = window.open("", "", "height=500,width=800");
+      const styles = Array.from(document.styleSheets)
+        .map((styleSheet) => {
+          try {
+            return Array.from(styleSheet.cssRules)
+              .map(rule => rule.cssText)
+              .join("\n");
+          } catch (e) {
+            console.log(e)
+            return "";
+          }
+        })
+        .join("\n");
       if (!printWindow) return;
       printWindow.document.write(`
       <html>
         <head>
           <title>Print</title>
+          <style>${styles}</style>
           <style>
+            @media print {
+              @page {
+                size: A4;
+              }
+              #resume-preview {
+                width: 210mm !important;       /* A4 width */
+                min-height: 297mm !important;  /* A4 height */
+              }
+            }
             body { font-family: Arial, sans-serif; margin: 0px; padding: 0px }
-            h1 { color: darkblue; }
           </style>
         </head>
         <body>
