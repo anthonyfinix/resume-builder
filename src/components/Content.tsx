@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import Resume from "./Resume/Resume";
 import { ResumeContext } from "./ResumeProvider";
-import ResumeSVG from "./Resume/ResumeSVG";
 
 const Content = () => {
   const resumeContext = useContext(ResumeContext);
   return <div className="content">
+    <div style={{ transform: "scale(0.7)" }}>
     <Resume ref={resumeContext?.resumeRef} />
+    </div>
     {/* <ResumeSVG/> */}
   </div>;
 };

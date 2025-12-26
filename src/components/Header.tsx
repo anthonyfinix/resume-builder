@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Button from "./Button";
 import { Flex } from "./Flex";
-import { Bars, Print } from "./icons";
+import { Bars } from "./icons";
 import { ResumeContext } from "./ResumeProvider";
 
 const Header = () => {
@@ -32,13 +32,9 @@ const Header = () => {
             @media print {
               @page {
                 size: A4;
-              }
-              #resume-preview {
-                width: 210mm !important;       /* A4 width */
-                min-height: 297mm !important;  /* A4 height */
+                margin: 0;
               }
             }
-            body { font-family: Arial, sans-serif; margin: 0px; padding: 0px }
           </style>
         </head>
         <body>
@@ -60,7 +56,6 @@ const Header = () => {
           </Flex>
           <Button onClick={handlePrint} size="xs">
             <Flex gap={4}>
-              <Print />
               Print
             </Flex>
           </Button>
