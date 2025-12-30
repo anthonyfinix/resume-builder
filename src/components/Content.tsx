@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Resume from "./Resume/Resume";
+import Resume from "../templates/Resume";
 import { ResumeContext } from "./ResumeProvider";
 
 const Content = () => {
@@ -8,7 +8,6 @@ const Content = () => {
     <div style={{ transform: "scale(0.7)" }}>
     <Resume ref={resumeContext?.resumeRef} />
     </div>
-    {/* <ResumeSVG/> */}
   </div>;
 };
 export default Content;

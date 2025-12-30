@@ -1,7 +1,7 @@
 import { FC, useContext, useRef } from "react";
-import { ResumeContext } from "../ResumeProvider";
-import formatDate from "../../utils/formatDate";
-import { Wrapper, Heading, Paragraph, Title } from './styles/index'
+import { ResumeContext } from "../components/ResumeProvider";
+import formatDate from "../utils/formatDate";
+import { Wrapper, Heading, Paragraph, Title } from '../components/Resume/styles/index'
 // import FirstName from "./FirstName";
 // import Heading from "./Heading";
 // import Subheading from "./Subheading";

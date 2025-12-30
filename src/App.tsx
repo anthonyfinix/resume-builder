@@ -27,18 +27,13 @@ function App() {
     <ResumeProvider>
       <div
         id="backdrop"
-        className={`backdrop-wrapper${
-          appContext?.selectedMenu !== null ? " sidebar-active" : ""
-        }`}
+        className={`backdrop-wrapper${appContext?.selectedMenu !== null ? " sidebar-active" : ""
+          }`}
       >
         <Header />
         <Sidebar items={items} />
-        {appContext?.selectedMenu === "basicInformation" && (
-          <BasicInformationSidebar />
-        )}
-        {appContext?.selectedMenu === "workExperience" && (
-          <WorkExperienceSidebar />
-        )}
+        {appContext?.selectedMenu === "basicInformation" && <BasicInformationSidebar />}
+        {appContext?.selectedMenu === "workExperience" && <WorkExperienceSidebar />}
         {appContext?.selectedMenu === "education" && <EducationSidebar />}
         {appContext?.selectedMenu === "language" && <LanguageSidebar />}
         {appContext?.selectedMenu === "tag" && <TagSidebar />}
