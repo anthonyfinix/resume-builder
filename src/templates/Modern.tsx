@@ -1,8 +1,8 @@
 import { useContext, useRef } from "react";
 import formatDate from "../utils/formatDate";
-import { Heading, Paragraph, Document } from '../components/Resume/styles/index'
+import { Document } from '../components/Resume/styles/Document'
 import { FontLoader } from "../components/Resume/styles/FontLoader";
-import {Text} from "../components/Resume/styles/Text";
+import { Text } from "../components/Resume/styles/Text";
 import { ResumeContext } from "../Provider/ResumeProvider";
 
 const Resume = () => {
@@ -21,7 +21,7 @@ const Resume = () => {
       <Text fontSize="3em">{resume?.state.basics.name}</Text>
       <Text fontSize="0.75em" marginBottom="2em">{resume?.state.basics.label}</Text>
       <div style={{ display: "flex" }}>
-        <div style={{flexGrow: 0}}>
+        <div style={{ flexGrow: 0 }}>
           <Text fontSize="1.5em" marginBottom={.2}>Expectation</Text>
           <Text fontSize="0.75em" marginBottom={.2}>{resume?.state.basics.summary}</Text>
           <Text fontSize="1.5em">Academic Qualification</Text>
@@ -40,10 +40,10 @@ const Resume = () => {
                 <Text>{exp.companyName}</Text>
                 <Text fontSize=".75em">{exp.description}</Text>
               </div>
-            ) 
+            )
           })}
         </div>
-        <div style={{flexBasis: "30%", flexShrink: 0, marginLeft: 10}}>
+        <div style={{ flexBasis: "30%", flexShrink: 0, marginLeft: 10 }}>
           <Text fontSize="1.5em">Contact Us</Text>
           <Text fontSize=".75em">{resume?.state.basics.email}</Text>
           <Text fontSize=".75em">{resume?.state.basics.phone}</Text>
