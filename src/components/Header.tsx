@@ -2,12 +2,13 @@ import { useContext } from "react";
 import Button from "./Button";
 import { Flex } from "./Flex";
 import { Bars } from "./icons";
-import { ResumeContext } from "./ResumeProvider";
+import { ResumeContext } from "../Provider/ResumeProvider";
 import print from "../utils/print";
 
 const Header = () => {
   const resumeContext = useContext(ResumeContext);
   const handlePrint = () => {
+    console.log(resumeContext)
     if (resumeContext) print(resumeContext.resumeRef.current)
   };
   return (

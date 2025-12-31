@@ -7,7 +7,7 @@ interface TextProps {
     marginTop?: string | number;
 }
 
-export const Text = styled.h1<TextProps>`
+export const Text = styled.p<TextProps>`
     font-size: ${props => props.fontSize || '1em'};
     margin: ${props => typeof props.margin === 'number' 
         ? `${props.margin}em` 

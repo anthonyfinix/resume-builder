@@ -3,7 +3,7 @@ import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Content from "./components/Content";
 import BasicInformationSidebar from "./components/BasicInformationSidebar";
-import ResumeProvider from "./components/ResumeProvider";
+import ResumeProvider from "./Provider/ResumeProvider";
 import { AppContext } from "./components/AppProvider";
 import { useContext } from "react";
 import WorkExperienceSidebar from "./components/WorkExperienceSidebar";
