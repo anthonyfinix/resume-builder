@@ -1,7 +1,7 @@
 import { FC, useContext, useRef } from "react";
 import { ResumeContext } from "../components/ResumeProvider";
 import formatDate from "../utils/formatDate";
-import { Wrapper, Heading, Paragraph, Title } from '../components/Resume/styles/index'
+import { Heading, Paragraph, Title, Document } from '../components/Resume/styles/index'
 // import FirstName from "./FirstName";
 // import Heading from "./Heading";
 // import Subheading from "./Subheading";
@@ -21,7 +21,7 @@ const Resume: FC<{
 
 
   return (
-    <Wrapper
+    <Document
       id="resume-preview"
       ref={(ref) => {
         resumeRef.current = ref;
@@ -54,7 +54,7 @@ const Resume: FC<{
       <Paragraph>{resume?.languages.join(", ").replace(/, *$/, "")}</Paragraph>
       <Heading>Skills</Heading>
       <Paragraph>{resume?.tags.join(", ").replace(/, *$/, "")}</Paragraph>
-    </Wrapper>
+    </Document>
   );
 };
 export default Resume;

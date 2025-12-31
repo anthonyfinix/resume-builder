@@ -1,4 +1,5 @@
 import styled from "styled-components";
+export * from './Document'
 
 export const Wrapper = styled.div`
     font-family: Arial, sans-serif;
@@ -10,8 +11,12 @@ export const Wrapper = styled.div`
     flex-shrink: 0;
 `
 
-export const Title = styled.h1`
-    font-size: 1em;
+interface TitleProps {
+    fontSize?: string;
+}
+
+export const Title = styled.h1<TitleProps>`
+    font-size: ${props => props.fontSize || '1em'};
 `
 export const Heading = styled.h2`
     font-size: 0.875em;
